@@ -1,0 +1,11 @@
+body:before {
+	content: 'CSS module ran successfully!';
+}
+
+body:before, body .test {
+	display: block;
+	margin: 50px;
+	text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */

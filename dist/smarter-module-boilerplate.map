@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA;CAEE,wCAAwC;CACxC;;AAHF;CAKE,eAAe;CACf,aAAa;CACb,mBAAmB;CACnB","file":"main.css","sourcesContent":["body{\n\t&:before{\n\t\tcontent: 'CSS module ran successfully!';\n\t}\n\t&:before, .test{\n\t\tdisplay: block;\n\t\tmargin: 50px;\n\t\ttext-align: center;\n\t}\n}"],"sourceRoot":"/source/"}

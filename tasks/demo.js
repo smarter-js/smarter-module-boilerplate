@@ -24,6 +24,13 @@ module.exports = function(gulp, config, plugins){
 	// Transpile Pug
 	gulp.task('demo:html', function(){
 
+		let sources = gulp.src([
+			'dist/**/*.{js,css}',
+			'!dist/**/*.min.{js,css}',
+			'demo/script.js',
+			'demo/style.css'
+		])
+
 		return gulp.src([
 				config.src + '/' + config.demo + '/**/*.pug',
 				'!' + config.src + '/' + config.demo + '/**/_*.pug',
@@ -31,6 +38,10 @@ module.exports = function(gulp, config, plugins){
 			.pipe(plumber(onError))
 			.pipe(pug({
 				pretty: '\t'
+			}))
+			.pipe(inject(sources, {
+				addPrefix: '..',
+				addRootSlash: false
 			}))
 			.pipe(gulp.dest(config.demo))
 			.pipe(notify({
@@ -48,7 +59,9 @@ module.exports = function(gulp, config, plugins){
 	})
 
 	// Build complete demo folder
-	gulp.task('demo:build', ['demo:script', 'demo:style', 'demo:html', 'demo:bower'])
+	gulp.task('demo:build', function(){
+		return runSequence(['demo:script', 'demo:style', 'demo:bower'], 'demo:html')
+	})
 
 	// Clean, then build complete demo folder
 	gulp.task('demo', function(){

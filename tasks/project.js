@@ -3,8 +3,6 @@
 module.exports = function(gulp, config, plugins){
 
 
-
-
 	// Change name of project
 	gulp.task('name', function(){
 		let title = process.argv[process.argv.length - 1],

@@ -34,7 +34,7 @@ for(i in plugins){
 }
 
 // Get camelcase version of name
-config.fileName = camelCase(config.package.name)
+config.camelName = camelCase(config.package.name)
 
 // Load tasks
 let files = glob.sync('./tasks/*.js')

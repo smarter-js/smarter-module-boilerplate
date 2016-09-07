@@ -1,0 +1,1 @@
+body:before{content:'CSS module ran successfully!'}body .test,body:before{display:block;margin:50px;text-align:center}

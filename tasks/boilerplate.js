@@ -159,7 +159,7 @@ module.exports = function(gulp, config, plugins){
 			[
 				'boilerplate:copytotemp',
 				'boilerplate:copytotemptasks',
-				'boilerplate:copytotempsrc',
+				//'boilerplate:copytotempsrc',
 				'boilerplate:copybower',
 				'boilerplate:copypackage'
 			],

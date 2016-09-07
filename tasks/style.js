@@ -40,7 +40,7 @@ module.exports = function(gulp, config, plugins){
 	// Transpile module Sass
 	gulp.task('style:build', function(){
 
-		let full = gulp.src(config.src + '/' + config.style + '/' + config.fileName + '.scss')
+		let full = gulp.src(config.src + '/' + config.style + '/main.scss')
 			.pipe(plumber(onError))
 			.pipe(sourcemaps.init())
 			.pipe(sass({
@@ -52,9 +52,11 @@ module.exports = function(gulp, config, plugins){
 				browsers: config.browsers
 			}))
 			.pipe(sourcemaps.write('/'))
-			.pipe(gulp.dest(config.dist))
+			.pipe(rename(function(path){
+				path.basename = config.package.name
+			}))
 
-		let min = gulp.src(config.src + '/' + config.style + '/' + config.fileName + '.scss')
+		let min = gulp.src(config.src + '/' + config.style + '/main.scss')
 			.pipe(plumber(onError))
 			.pipe(sass({
 				outputStyle: 'compressed'
@@ -64,11 +66,11 @@ module.exports = function(gulp, config, plugins){
 			}))
 			.pipe(csso())
 			.pipe(rename(function(path){
-				path.basename += '.min'
+				path.basename = config.package.name + '.min'
 			}))
-			.pipe(gulp.dest(config.dist))
 
 		return merge(full, min)
+			.pipe(gulp.dest(config.dist))
 			.pipe(plugins.browserSync.stream())
 			.pipe(notify({
 				message: 'Library styles processed',

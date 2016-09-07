@@ -10,13 +10,7 @@
 	})
 	*/
 
-	new ScrollAnimations(1000)
+	new smarterModuleBoilerplate()
 
 
-	// Initiate Fastclick
-	if ('addEventListener' in document) {
-		document.addEventListener('DOMContentLoaded', function() {
-			FastClick.attach(document.body)
-		}, false)
-	}
 }()

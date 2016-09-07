@@ -1,0 +1,10 @@
+body{
+	&:before{
+		content: 'CSS module ran successfully!';
+	}
+	&:before, .test{
+		display: block;
+		margin: 50px;
+		text-align: center;
+	}
+}
