@@ -2,22 +2,12 @@
 'use strict'
 module.exports = function(gulp, config, plugins){
 
-	let onError = {
-		errorHandler: function(err) {
-			util.log(util.colors.red(err))
-			this.emit('end')
-			gulp.src('')
-				.pipe(notify({message: 'ERROR!!!', onLast: true}))
-			
-		}
-	}
-
 
 	// Transpile demo Sass
 	gulp.task('demo:style', function(){
 
 		return gulp.src(config.src + '/' + config.demo + '/**/*.{scss,css}')
-			.pipe(plumber(onError))
+			.pipe(plumber(config.onError))
 			.pipe(sourcemaps.init())
 			.pipe(sass({
 				indentType: 'tab',
@@ -41,7 +31,7 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('style:build', function(){
 
 		let full = gulp.src(config.src + '/' + config.style + '/main.scss')
-			.pipe(plumber(onError))
+			.pipe(plumber(config.onError))
 			.pipe(sourcemaps.init())
 			.pipe(sass({
 				indentType: 'tab',
@@ -57,7 +47,7 @@ module.exports = function(gulp, config, plugins){
 			}))
 
 		let min = gulp.src(config.src + '/' + config.style + '/main.scss')
-			.pipe(plumber(onError))
+			.pipe(plumber(config.onError))
 			.pipe(sass({
 				outputStyle: 'compressed'
 			}))

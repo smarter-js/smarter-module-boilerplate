@@ -3,7 +3,7 @@
 module.exports = function(gulp, config, plugins){
 
 
-	gulp.task('gitinit', function(){
+	gulp.task('git:init', function(){
 		return gulp.src('')
 			.pipe(shell('git remote add origin ' + require('./package.json').repository.url, {
 				verbose: true,
@@ -21,7 +21,7 @@ module.exports = function(gulp, config, plugins){
 
 
 
-	gulp.task('commit', function(){
+	gulp.task('git:commit', function(){
 		let msg = process.argv[process.argv.length - 1]
 		return gulp.src('')
 			.pipe(shell('git add -A', {
@@ -31,8 +31,9 @@ module.exports = function(gulp, config, plugins){
 				verbose: true,
 			}))
 	})
+	gulp.task('commit', ['git:commit'])
 
-	gulp.task('gitpush', function(){
+	gulp.task('git:push', function(){
 		// Increment version and push
 		return gulp.src('./package.json')
 			.pipe(bump())
@@ -50,12 +51,12 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('push', function(cb){
 		runSequence(
 			'build',
-			['gitpush'],
+			['git:push'],
 			cb
 		)
 	})
 
-	gulp.task('gitrelease', function(){
+	gulp.task('git:release', function(){
 		// Increment version and push
 		return gulp.src('./package.json')
 			.pipe(bump({type:'minor'}))
@@ -74,7 +75,7 @@ module.exports = function(gulp, config, plugins){
 			}))
 
 	})
-	gulp.task('gitmajorrelease', function(){
+	gulp.task('git:majorrelease', function(){
 		// Increment version and push
 		return gulp.src('./package.json')
 			.pipe(bump({type:'major'}))
@@ -94,6 +95,11 @@ module.exports = function(gulp, config, plugins){
 
 	})
 
+	// Removes .git directory
+	gulp.task('git:clean', function(){
+		return gulp.src('.git')
+			.pipe(vinylPaths(del))
+	})
 
 
 

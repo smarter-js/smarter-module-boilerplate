@@ -1,4 +1,4 @@
-/*! smarter-module-boilerplate v0.0.1 | MIT License | Kennedy Rose <kennedy@kennedyrose.com> (https://kennedyrose.com) */ 
+/*! Smarter Module Boilerplate v0.0.2 | MIT License | Kennedy Rose <kennedy@kennedyrose.com> (https://kennedyrose.com) */ 
 ;(function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define([], factory)

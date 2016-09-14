@@ -2,18 +2,6 @@
 'use strict'
 module.exports = function(gulp, config, plugins){
 
-	// Error handling
-	let onError = {
-		errorHandler: function(err) {
-			util.log(util.colors.red(err))
-			this.emit('end')
-			notifier({
-				message: 'ERROR!!!',
-				onLast: true
-			})
-		}
-	}
-
 
 	// Clear demo folder
 	gulp.task('demo:clean', function(){
@@ -35,7 +23,7 @@ module.exports = function(gulp, config, plugins){
 				config.src + '/' + config.demo + '/**/*.pug',
 				'!' + config.src + '/' + config.demo + '/**/_*.pug',
 			])
-			.pipe(plumber(onError))
+			.pipe(plumber(config.onError))
 			.pipe(pug({
 				pretty: '\t'
 			}))

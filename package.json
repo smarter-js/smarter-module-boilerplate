@@ -1,11 +1,12 @@
 {
   "name": "smarter-module-boilerplate",
-  "title": "smarter-module-boilerplate",
+  "title": "Smarter Module Boilerplate",
   "version": "0.0.2",
   "description": "A Gulp boilerplate for UMD modules",
   "main": "dist/smarterMenuBar.js",
   "scripts": {
-    "start": "npm install && bower install && gulp build"
+    "dev": "npm install && bower install && gulp build && gulp",
+    "new": "npm install && bower install && gulp selfname && gulp desc -m ' ' && gulp git:clean && gulp clean:readme && gulp build && gulp"
   },
   "author": "Kennedy Rose <kennedy@kennedyrose.com> (https://kennedyrose.com)",
   "license": "MIT",

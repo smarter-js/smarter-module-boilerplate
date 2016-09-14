@@ -15,4 +15,6 @@ module.exports = function(gulp, config, plugins){
 			.pipe(vinylPaths(del))
 	})
 
+	gulp.task('clean', ['trim'])
+
 }
