@@ -32,9 +32,9 @@ module.exports = function(gulp, config, plugins){
 		return gulp.src([
 				'temp/**/*',
 				'!temp/.git',
-				'!temp/src',
-				'!temp/dist',
-				'!temp/demo',
+				'!temp/src/**/*',
+				'!temp/dist/**/*',
+				'!temp/demo/**/*',
 				'!temp/README.md',
 				'!temp/build'
 			])
@@ -73,7 +73,7 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('boilerplate:pull', function(cb){
 		runSequence(
 			['boilerplate:clone', 'boilerplate:preclean'],
-			'boilerplate:copytotemp',
+			'boilerplate:copyfromtemp',
 			['boilerplate:postclean', 'boilerplate:settings'],
 			'boilerplate:install',
 			cb
