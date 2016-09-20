@@ -1,7 +1,7 @@
 {
   "name": "smarter-module-boilerplate",
   "title": "Smarter Module Boilerplate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Gulp boilerplate for UMD modules",
   "main": "dist/smarterMenuBar.js",
   "scripts": {
